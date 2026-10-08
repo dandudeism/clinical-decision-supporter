@@ -1,1 +1,1 @@
-# clinical-decision-supporter
+An educational prototype for research exploring explainable, rule-based clinical decision support using Python and AI. This project is not intended for clinical use but could form the basis of clinical systems in the future.
