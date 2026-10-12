@@ -8,7 +8,7 @@ class HighRespiratoryRateRule(ClinicalRule):
         self.threshold = threshold
 
     def evaluate(self, patient: Patient) -> RuleResult | None:
-        if patient.respiratory_rate > self.threshold:
+        if patient.resp_rate > self.threshold:
             return RuleResult(
                 rule_id="HIGH_RESPIRATORY_RATE",
                 message=(
