@@ -4,6 +4,7 @@ from rules.hypotension import HypotensionRule
 from rules.tachypnoea import HighRespiratoryRateRule
 from rules.tachycardia import HighHeartRateRule
 from engine import DecisionEngine
+from scoring import calculate_risk
 
 
 patient = Patient(
@@ -12,7 +13,7 @@ patient = Patient(
     systolic_bp=82,
     temperature=36.7,
     resp_rate=24,
-    sats=94
+    sats=94,
     confusion=True
 )
 
@@ -25,6 +26,11 @@ engine = DecisionEngine(
 )
 
 results = engine.evaluate(patient)
+
+assessment = calculate_risk(results)
+print(f"Risk score: {assessment.score}")
+print(f"Category: {assessment.category}")
+print(f"Triggered rules: {assessment.triggered_rules}")
 
 if not results:
     print("No rules triggered.")

@@ -8,6 +8,9 @@ class HighHeartRateRule(ClinicalRule):
         self.threshold = threshold
 
     def evaluate(self, patient: Patient) -> RuleResult | None:
+        if patient.heart_rate is None:
+            return None
+        
         if patient.heart_rate > self.threshold:
             return RuleResult(
                 rule_id="HIGH_HEART_RATE",

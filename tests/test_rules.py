@@ -79,3 +79,27 @@ def test_high_respiratory_rate_rule_does_not_trigger():
     result = HighRespiratoryRateRule().evaluate(patient)
 
     assert result is None
+
+def test_hypotension_rule_handles_missing_blood_pressure():
+    patient = Patient(age=67, systolic_bp=None)
+
+    result = HypotensionRule().evaluate(patient)
+
+    assert result is None
+
+
+def test_hypotension_rule_triggers_below_threshold():
+    patient = Patient(age=67, systolic_bp=81)
+
+    result = HypotensionRule().evaluate(patient)
+
+    assert result is not None
+    assert result.rule_id == "LOW_SYSTOLIC_BP"
+
+
+def test_hypotension_rule_does_not_trigger_at_threshold():
+    patient = Patient(age=67, systolic_bp=85)
+
+    result = HypotensionRule().evaluate(patient)
+
+    assert result is None

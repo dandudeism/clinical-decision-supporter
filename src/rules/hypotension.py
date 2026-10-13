@@ -8,6 +8,9 @@ class HypotensionRule(ClinicalRule):
         self.threshold = threshold
 
     def evaluate(self, patient: Patient) -> RuleResult | None:
+        if patient.systolic_bp is None:
+            return None
+        
         if patient.systolic_bp < self.threshold:
             return RuleResult(
                 rule_id="LOW_SYSTOLIC_BP",
