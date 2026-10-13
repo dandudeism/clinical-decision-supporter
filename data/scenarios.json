@@ -1,0 +1,65 @@
+
+[
+  {
+    "id": "case_001",
+    "description": "All observations within illustrative thresholds",
+    "patient": {
+      "age": 30,
+      "heart_rate": 75,
+      "systolic_bp": 120,
+      "temperature": 36.7,
+      "resp_rate": 16,
+      "sats": 98,
+      "confusion": false
+    },
+    "expected_rules": []
+  },
+  {
+    "id": "case_002",
+    "description": "Low systolic BP",
+    "patient": {
+      "age": 67,
+      "heart_rate": 80,
+      "systolic_bp": 84,
+      "temperature": 36.8,
+      "resp_rate": 16,
+      "sats": 98,
+      "confusion": false
+    },
+    "expected_rules": [
+      "LOW_SYSTOLIC_BP"
+    ]
+  },
+  {
+    "id": "case_003",
+    "description": "Multiple alert conditions",
+    "patient": {
+      "age": 72,
+      "heart_rate": 125,
+      "systolic_bp": 83,
+      "temperature": 38.7,
+      "resp_rate": 24,
+      "sats": 94,
+      "confusion": true
+    },
+    "expected_rules": [
+      "LOW_SYSTOLIC_BP",
+      "HIGH_HEART_RATE",
+      "HIGH_RESPIRATORY_RATE"
+    ]
+  },
+  {
+    "id": "case_004",
+    "description": "Incomplete observations",
+    "patient": {
+      "age": 55,
+      "heart_rate": null,
+      "systolic_bp": null,
+      "temperature": null,
+      "resp_rate": null,
+      "sats": null,
+      "confusion": null
+    },
+    "expected_rules": []
+  }
+]
