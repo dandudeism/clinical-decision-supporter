@@ -5,6 +5,9 @@ from models.patient import Patient
 from rules.hypotension import HypotensionRule
 from rules.tachycardia import HighHeartRateRule
 from rules.tachypnoea import HighRespiratoryRateRule
+from rules.fever import FeverRule
+from rules.hypertension import HypertensionRule
+from rules.low_sats import LowSatsRule
 from engine import DecisionEngine
 
 
@@ -19,6 +22,9 @@ def test_all_synthetic_scenarios_match_expected_rules():
         HypotensionRule(),
         HighHeartRateRule(),
         HighRespiratoryRateRule(),
+        LowSatsRule(),
+        FeverRule(),
+        HypertensionRule(),
     ])
 
     for scenario in scenarios:

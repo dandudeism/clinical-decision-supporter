@@ -6,6 +6,9 @@ from models.patient import Patient
 from rules.hypotension import HypotensionRule
 from rules.tachycardia import HighHeartRateRule
 from rules.tachypnoea import HighRespiratoryRateRule
+from rules.low_sats import LowSatsRule
+from rules.fever import FeverRule
+from rules.hypertension import HypertensionRule
 from engine import DecisionEngine
 from scoring import calculate_risk
 
@@ -20,6 +23,9 @@ def main():
         HypotensionRule(),
         HighHeartRateRule(),
         HighRespiratoryRateRule(),
+        LowSatsRule(),
+        FeverRule(),
+        HypertensionRule(),
     ])
 
     passed = 0

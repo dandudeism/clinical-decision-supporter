@@ -45,7 +45,8 @@
     "expected_rules": [
       "LOW_SYSTOLIC_BP",
       "HIGH_HEART_RATE",
-      "HIGH_RESPIRATORY_RATE"
+      "HIGH_RESPIRATORY_RATE",
+      "HIGH_TEMPERATURE"
     ]
   },
   {
@@ -61,5 +62,22 @@
       "confusion": null
     },
     "expected_rules": []
+  },
+  {
+    "id": "case_005",
+    "description": "Low sats and low BP",
+    "patient": {
+      "age": 72,
+      "heart_rate": 90,
+      "systolic_bp": 83,
+      "temperature": 37.2,
+      "resp_rate": 15,
+      "sats": 88,
+      "confusion": true
+    },
+    "expected_rules": [
+      "LOW_SYSTOLIC_BP",
+      "LOW_SATS_1"
+    ]
   }
 ]

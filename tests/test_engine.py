@@ -3,21 +3,27 @@ from engine import DecisionEngine
 from rules.hypotension import HypotensionRule
 from rules.tachycardia import HighHeartRateRule
 from rules.tachypnoea import HighRespiratoryRateRule
+from rules.fever import FeverRule
+from rules.low_sats import LowSatsRule
+from rules.hypertension import HypertensionRule
 
-def make_patient(systolic_bp: int) -> Patient:
-    return Patient(
-        age=67,
-        heart_rate=80,
-        systolic_bp=systolic_bp,
-        temperature=36.8,
-        resp_rate=16,
-        sats=98,
-        confusion=False
-    )
+
+def make_patient(**overrides):
+    data = {
+        "age": 40,
+        "heart_rate": 75,
+        "systolic_bp": 120,
+        "temperature": 36.7,
+        "resp_rate": 16,
+        "sats": 98,
+        "confusion": False,
+    }
+    data.update(overrides)
+    return Patient(**data)
 
 def test_engine_returns_triggered_rules():
     engine = DecisionEngine([HypotensionRule()])
-    patient = make_patient(82)
+    patient = make_patient(systolic_bp=82)
 
     results = engine.evaluate(patient)
 
@@ -26,7 +32,7 @@ def test_engine_returns_triggered_rules():
 
 def test_engine_returns_empty_list_when_no_rule_triggers():
     engine = DecisionEngine([HypotensionRule()])
-    patient = make_patient(110)
+    patient = make_patient(systolic_bp=110)
 
     results = engine.evaluate(patient)
 
@@ -35,7 +41,7 @@ def test_engine_returns_empty_list_when_no_rule_triggers():
 
 def test_engine_with_no_rules():
     engine = DecisionEngine([])
-    patient = make_patient(110)
+    patient = make_patient(systolic_bp=110)
 
     results = engine.evaluate(patient)
 
@@ -66,4 +72,26 @@ def test_engine_returns_multiple_triggered_rules():
         "LOW_SYSTOLIC_BP",
         "HIGH_HEART_RATE",
         "HIGH_RESPIRATORY_RATE"
+    }
+
+def test_engine_returns_new_alerts():
+    patient = make_patient(
+        temperature=39.0,
+        systolic_bp=190,
+        sats=84,
+    )
+
+    engine = DecisionEngine([
+        FeverRule(),
+        HypertensionRule(),
+        LowSatsRule(),
+    ])
+
+    results = engine.evaluate(patient)
+    rule_ids = {result.rule_id for result in results}
+
+    assert rule_ids == {
+        "HIGH_TEMPERATURE",
+        "HIGH_SYSTOLIC_BP",
+        "LOW_SATS_2",
     }
