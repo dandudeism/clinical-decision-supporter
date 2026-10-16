@@ -37,3 +37,18 @@ def test_all_synthetic_scenarios_match_expected_rules():
         expected = sorted(scenario["expected_rules"])
 
         assert actual == expected, scenario["id"]
+
+
+def test_scenario_ids_are_unique():
+    project_root = Path(__file__).resolve().parent.parent
+    scenarios_path = project_root / "data" / "scenarios.json"
+
+    with open(scenarios_path, encoding="utf-8") as file:
+        scenarios = json.load(file)
+
+    scenario_ids = [
+        scenario["scenario_id"]
+        for scenario in scenarios
+    ]
+
+    assert len(scenario_ids) == len(set(scenario_ids))

@@ -1,7 +1,7 @@
 
 [
   {
-    "id": "case_001",
+    "scenario_id": "SC011",
     "description": "All observations within illustrative thresholds",
     "patient": {
       "age": 30,
@@ -15,7 +15,7 @@
     "expected_rules": []
   },
   {
-    "id": "case_002",
+    "scenario_id": "SC010",
     "description": "Low systolic BP",
     "patient": {
       "age": 67,
@@ -31,7 +31,7 @@
     ]
   },
   {
-    "id": "case_003",
+    "scenario_id": "SC009",
     "description": "Multiple alert conditions",
     "patient": {
       "age": 72,
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "id": "case_004",
+    "scenario_id": "SC008",
     "description": "Incomplete observations",
     "patient": {
       "age": 55,
@@ -64,7 +64,7 @@
     "expected_rules": []
   },
   {
-    "id": "case_005",
+    "scenario_id": "SC007",
     "description": "Low sats and low BP",
     "patient": {
       "age": 72,
@@ -77,6 +77,94 @@
     },
     "expected_rules": [
       "LOW_SYSTOLIC_BP",
+      "LOW_SATS_1"
+    ]
+  },
+  {
+    "scenario_id": "SC001",
+    "description": "Normal observations",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 120,
+      "temperature": 36.7,
+      "resp_rate": 16,
+      "sats": 98,
+      "confusion": false
+    },
+    "expected_rules": []
+  },
+  {
+    "scenario_id": "SC002",
+    "description": "Temperature above configured threshold",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 120,
+      "temperature": 39.0,
+      "resp_rate": 16,
+      "sats": 98,
+      "confusion": false
+    },
+    "expected_rules": ["HIGH_TEMPERATURE"]
+  },
+  {
+    "scenario_id": "SC003",
+    "description": "Systolic blood pressure above configured threshold",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 200,
+      "temperature": 36.7,
+      "resp_rate": 16,
+      "sats": 98,
+      "confusion": false
+    },
+    "expected_rules": ["HIGH_SYSTOLIC_BP"]
+  },
+  {
+    "scenario_id": "SC004",
+    "description": "Moderately low oxygen saturation",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 120,
+      "temperature": 36.7,
+      "resp_rate": 16,
+      "sats": 90,
+      "confusion": false
+    },
+    "expected_rules": ["LOW_SATS_1"]
+  },
+  {
+    "scenario_id": "SC005",
+    "description": "Very low oxygen saturation",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 120,
+      "temperature": 36.7,
+      "resp_rate": 16,
+      "sats": 87,
+      "confusion": false
+    },
+    "expected_rules": ["LOW_SATS_2"]
+  },
+  {
+    "scenario_id": "SC006",
+    "description": "Multiple rules trigger together",
+    "patient": {
+      "age": 40,
+      "heart_rate": 75,
+      "systolic_bp": 200,
+      "temperature": 39.0,
+      "resp_rate": 16,
+      "sats": 90,
+      "confusion": false
+    },
+    "expected_rules": [
+      "HIGH_TEMPERATURE",
+      "HIGH_SYSTOLIC_BP",
       "LOW_SATS_1"
     ]
   }

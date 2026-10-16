@@ -41,19 +41,13 @@ def main():
             scenario["expected_rules"]
         )
 
-        assessment = calculate_risk(results)
-        success = actual_rules == expected_rules
+        passed = actual_rules == expected_rules
 
-        if success:
-            passed += 1
-
-        print(f"\nScenario: {scenario['id']}")
-        print(f"Description: {scenario['description']}")
-        print(f"Expected rules: {expected_rules}")
-        print(f"Actual rules:   {actual_rules}")
-        print(f"Score: {assessment.score}")
-        print(f"Category: {assessment.category}")
-        print(f"Test passed: {success}")
+        print(f"\n{scenario['scenario_id']}: "
+            f"{scenario['description']}")
+        print(f"Expected: {expected_rules}")
+        print(f"Actual:   {actual_rules}")
+        print(f"Result:   {'PASS' if passed else 'FAIL'}")
 
     print(f"\nEvaluation: {passed}/{len(scenarios)} scenarios passed.")
 
