@@ -1,0 +1,123 @@
+[
+  {
+    "scenario_id": "SC011",
+    "description": "All observations within illustrative thresholds",
+    "expected_rules": [],
+    "actual_rules": [],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC010",
+    "description": "Low systolic BP",
+    "expected_rules": [
+      "LOW_SYSTOLIC_BP"
+    ],
+    "actual_rules": [
+      "LOW_SYSTOLIC_BP"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC009",
+    "description": "Multiple alert conditions",
+    "expected_rules": [
+      "HIGH_HEART_RATE",
+      "HIGH_RESPIRATORY_RATE",
+      "HIGH_TEMPERATURE",
+      "LOW_SYSTOLIC_BP"
+    ],
+    "actual_rules": [
+      "HIGH_HEART_RATE",
+      "HIGH_RESPIRATORY_RATE",
+      "HIGH_TEMPERATURE",
+      "LOW_SYSTOLIC_BP"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC008",
+    "description": "Incomplete observations",
+    "expected_rules": [],
+    "actual_rules": [],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC007",
+    "description": "Low sats and low BP",
+    "expected_rules": [
+      "LOW_SATS_1",
+      "LOW_SYSTOLIC_BP"
+    ],
+    "actual_rules": [
+      "LOW_SATS_1",
+      "LOW_SYSTOLIC_BP"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC001",
+    "description": "Normal observations",
+    "expected_rules": [],
+    "actual_rules": [],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC002",
+    "description": "Temperature above configured threshold",
+    "expected_rules": [
+      "HIGH_TEMPERATURE"
+    ],
+    "actual_rules": [
+      "HIGH_TEMPERATURE"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC003",
+    "description": "Systolic blood pressure above configured threshold",
+    "expected_rules": [
+      "HIGH_SYSTOLIC_BP"
+    ],
+    "actual_rules": [
+      "HIGH_SYSTOLIC_BP"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC004",
+    "description": "Moderately low oxygen saturation",
+    "expected_rules": [
+      "LOW_SATS_1"
+    ],
+    "actual_rules": [
+      "LOW_SATS_1"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC005",
+    "description": "Very low oxygen saturation",
+    "expected_rules": [
+      "LOW_SATS_2"
+    ],
+    "actual_rules": [
+      "LOW_SATS_2"
+    ],
+    "passed": true
+  },
+  {
+    "scenario_id": "SC006",
+    "description": "Multiple rules trigger together",
+    "expected_rules": [
+      "HIGH_SYSTOLIC_BP",
+      "HIGH_TEMPERATURE",
+      "LOW_SATS_1"
+    ],
+    "actual_rules": [
+      "HIGH_SYSTOLIC_BP",
+      "HIGH_TEMPERATURE",
+      "LOW_SATS_1"
+    ],
+    "passed": true
+  }
+]
